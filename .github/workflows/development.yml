@@ -29,16 +29,17 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Step to print the current directory
+      # Step to print the current directory in WSL
       - name: Print working directory
-        run: pwd  # This will print the current working directory to the logs
+        run: pwd
 
-      # Optionally, print all files and folders to get an overview of the file structure
+      # Step to list all files in the current directory to verify structure
       - name: List all files
-        run: ls -al  # This will list all files and folders in the current directory
+        run: ls -al
 
-      - name: Navigate to Example/demo and build with Maven
+      # Step to navigate to the project folder in WSL
+      - name: Navigate to project folder and build with Maven
         run: |
-          cd "Example demo"  # Navigate to the Example demo folder
+          cd /mnt/c/Users/work/IdeaProjects/esd-2024-github-actions/Example\ demo  # Navigate to the Example demo folder
           mvn -B package --file pom.xml  # Run Maven in that folder
 
