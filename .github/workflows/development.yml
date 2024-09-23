@@ -37,9 +37,13 @@ jobs:
       - name: List all files
         run: ls -al
 
-      # Step to navigate to the project folder in WSL
-      - name: Navigate to project folder and build with Maven
+      # Navigate to the "Example demo" folder inside the Linux runner's current directory
+      - name: Navigate to Example demo and build with Maven
         run: |
-          cd /mnt/c/Users/work/IdeaProjects/esd-2024-github-actions/Example\ demo  # Navigate to the Example demo folder
+          cd "Example demo"  # Navigate to the Example demo folder in the current directory
           mvn -B package --file pom.xml  # Run Maven in that folder
+
+      # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+      - name: Update dependency graph
+        uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
 
