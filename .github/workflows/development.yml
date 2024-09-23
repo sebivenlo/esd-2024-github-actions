@@ -17,13 +17,11 @@ on:
 jobs:
   build:
 
-    runs-on: [self-hosted, linux]
+    runs-on: self-hosted
 
     steps:
-      # Checkout the code from the repository
       - uses: actions/checkout@v4
-
-      # Set up Java JDK 17
+      
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -31,17 +29,25 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Print working directory to verify the current location
+      # Print working directory to verify current location
       - name: Print working directory
         run: pwd
 
-      # List files to verify structure and ensure "Example demo" exists
+      # List files in root directory to verify structure
       - name: List files in root
         run: ls -al
 
-      # Navigate to "Example demo" folder and build with Maven
-      - name: Navigate to Example demo and build with Maven
-        run: |
-          ls -al  # Optional: List files in Example demo to verify pom.xml is present
-          mvn -B package --file "Example demo\assignment\pom.xml"  # Run Maven using the pom.xml in Example demo
+      # List files in Example demo directory to explore the structure
+      - name: List files in Example demo
+        run: ls -al "Example demo"
 
+      # List files in the assignment folder to check for pom.xml
+      - name: List files in assignment folder
+        run: ls -al "Example demo/assignment"
+
+      # Navigate to the correct directory and run Maven
+      - name: Navigate to assignment folder and build with Maven
+        run: |
+          cd "Example demo/assignment"  # Correct the path to use forward slashes
+          ls -al  # Verify the pom.xml file is present
+          mvn -B package --file pom.xml  # Run Maven using the pom.xml file
