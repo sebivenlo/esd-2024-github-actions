@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: [self-hosted,linux]
+    runs-on: [self-hosted, linux]
 
     steps:
       # Checkout the code from the repository
@@ -42,7 +42,6 @@ jobs:
       # Navigate to "Example demo" folder and build with Maven
       - name: Navigate to Example demo and build with Maven
         run: |
-          cd "Example demo"  # Navigate to the Example demo folder
           ls -al  # Optional: List files in Example demo to verify pom.xml is present
-          mvn -B package --file pom.xml  # Run Maven using the pom.xml in Example demo
+          mvn -B package --file "Example demo\assignment\pom.xml"  # Run Maven using the pom.xml in Example demo
 
