@@ -1,0 +1,57 @@
+.DS_Store
+build
+
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+demo/mqtt-server/moquette-0.17.0-RC1/.editorconfig
+demo/mqtt-server/moquette-0.17.0-RC1/.github/ISSUE_TEMPLATE.md
+/demo/mqtt-server/moquette-0.17.0-RC1/.github
+/demo/mqtt-server/moquette-0.17.0-RC1/.mvn
+demo/mqtt-server/moquette-0.17.0-RC1/about.html
+/demo/mqtt-server/moquette-0.17.0-RC1/tools_scripts/benchmark
+/demo/mqtt-server/moquette-0.17.0-RC1/tools_scripts
+*.jks
+demo/mqtt-server/moquette-0.17.0-RC1/broker/src/test/resources/config/password_file.conf
+demo/mqtt-server/moquette-0.17.0-RC1/broker/src/test/resources/password_file.conf
+demo/mqtt-server/moquette-0.17.0-RC1/ChangeLog.txt
+demo/mqtt-server/moquette-0.17.0-RC1/distribution/src/main/resources/password_file.conf
+demo/mqtt-server/pulsar-connector/paho1213520249300-tcplocalhost1883/.lck
+demo/mqtt-server/pulsar-connector/paho1076680416600-tcplocalhost1883/.lck
+
+# Created by https://www.toptal.com/developers/gitignore/api/gradle
+# Edit at https://www.toptal.com/developers/gitignore?templates=gradle
+
+### Gradle ###
+.gradle
+**/build/
+!src/**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Avoid ignore Gradle wrappper properties
+!gradle-wrapper.properties
+
+# Cache of project
+.gradletasknamecache
+
+# Eclipse Gradle plugin generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+### Gradle Patch ###
+# Java heap dump
+*.hprof
+
+# End of https://www.toptal.com/developers/gitignore/api/gradle
