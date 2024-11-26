@@ -18,6 +18,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Verify maven
-      run: mvn verify
+      run: mvn verify --file assignments/exercise-3/pom.xml
     - name: Build with Maven
       run: mvn -B package --file assignments/exercise-3/pom.xml
