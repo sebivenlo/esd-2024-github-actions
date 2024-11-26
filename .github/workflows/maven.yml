@@ -17,5 +17,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    - name: Verify maven
+      run: mvn verify
     - name: Build with Maven
       run: mvn -B package --file assignments/exercise-3/pom.xml
