@@ -2,8 +2,8 @@ services:
   github-actions-runner:
     image: evl8/esd-github-actions-runner
     environment:
-      - URL=value
-      - TOKEN=value
+      - URL=<replace this with your repository url>
+      - TOKEN=<replace this with your repository token>
     networks:
       - esd
   nexus:

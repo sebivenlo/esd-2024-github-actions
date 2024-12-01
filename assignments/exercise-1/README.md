@@ -8,7 +8,9 @@
   ABCDEFIGHIJKLMNOPQRSTUVW12345` extracts to  
   `Url: https://github.com/evl-8/github-action-demo` and
   `Token: ABCDEFIGHIJKLMNOPQRSTUVW12345`
-5. Run the command <br> `docker run --name github-actions-runner -e URL=<url> -e TOKEN=<token> evl8/github-actions-runner`
+5. Go into the cloned `esd-github-actions-assignment` and open the `docker-compose.yml`
+6. Follow the instructions inside the file
+7. Run `docker compose up`
 
 You have now created a Github actions runner!  
 It should look like the picture beneath.

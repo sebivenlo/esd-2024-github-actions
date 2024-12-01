@@ -77,16 +77,25 @@ In this job, we will upload our final Jar to a nexus repository server
 
 - Setup Java 17
 - Download the results from the previous job
-- Execute `./gradlew publish` and add ```env:
-          ORG_GRADLE_PROJECT_dockerRepoUsername: ${{ secrets.REPO_USERNAME }}
-          ORG_GRADLE_PROJECT_dockerRepoPassword: ${{ secrets.REPO_PASSWORD }}```
+- Execute `./gradlew publish`
+
+
+```
+env:
+  ORG_GRADLE_PROJECT_dockerRepoUsername: ${{ secrets.REPO_USERNAME }}
+  ORG_GRADLE_PROJECT_dockerRepoPassword: ${{ secrets.REPO_PASSWORD }}
+```
 
 ## Making a pull request
 
 ### Requirements
 
+Edit the workflow so that:
+
 - The workflow should run when pushing on branch "prod", "dev" and "stage"
 - The workflow should run when making a pull request on branch "prod", "dev" and "stage"
+
+After that:
 
 - Create a pull request from `dev` into `stage`
 - Wait for all Github actions and `Merge pull request`
