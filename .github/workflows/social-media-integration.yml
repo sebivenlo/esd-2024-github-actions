@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Post a tweet on push
-        uses: ethomson/send-tweet@v1
+        uses: julb/action-post-twitter-status@v1
         with:
           status: "🚀 Code has been pushed to the repository!"
           consumer-key: ${{ secrets.TWITTER_API_KEY }}
