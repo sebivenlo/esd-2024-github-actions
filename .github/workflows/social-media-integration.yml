@@ -12,8 +12,8 @@ jobs:
       - name: Post a tweet on push
         uses: julb/action-post-twitter-status@v1
         with:
-          status: "🚀 Code has been pushed to the repository!"
-          consumer-key: ${{ secrets.TWITTER_API_KEY }}
-          consumer-secret: ${{ secrets.TWITTER_API_SECRET_KEY }}
-          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          message: "🚀 Code has been pushed to the repository!"
+          twitter_app_consumer_api_key: ${{ secrets.TWITTER_API_KEY }}
+          twitter_app_consumer_api_secret_key: ${{ secrets.TWITTER_API_SECRET_KEY }}
+          twitter_app_access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          twitter_app_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
