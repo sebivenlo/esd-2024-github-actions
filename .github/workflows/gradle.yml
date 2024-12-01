@@ -1,0 +1,80 @@
+# The Workflow's name
+name: Java CI with Gradle
+
+# The workflow should run when pushing
+on:
+  push:
+    branches: [ "prod", "dev", "stage" ]
+  pull_request:
+    branches: [ "prod", "dev", "stage" ]
+
+defaults:
+  run:
+    working-directory: ./assignments/exercise-3
+
+jobs:
+  build:
+    runs-on: ["self-hosted"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Make gradlew executable
+      run: chmod +x gradlew
+
+    - name: Build with Gradle Wrapper
+      run: ./gradlew build
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+          name: build-artifact
+          path: .
+    
+
+  verify:
+    runs-on: ["self-hosted"]
+    needs: build
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+      - name: Run test with Gradle Wrapper
+        run: ./gradlew test
+      - name: Run checkstyle with Gradle Wrapper
+        run: ./gradlew checkstyleMain
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-artifact
+          path: .
+
+  publish:
+    runs-on: ["self-hosted"]
+    needs: verify
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: verify-artifact
+      - name: Publish library
+        env:
+          ORG_GRADLE_PROJECT_dockerRepoUsername: ${{ secrets.REPO_USERNAME }}
+          ORG_GRADLE_PROJECT_dockerRepoPassword: ${{ secrets.REPO_PASSWORD }}
+        run: ./gradlew publish
