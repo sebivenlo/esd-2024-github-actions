@@ -63,6 +63,9 @@ In the `.github/workflows/` directory, create a new file named `exercise-5.yml`.
 
 ### Permissions
 Ensure your workflow has the necessary permissions to post comments by including:
-```yaml
-permissions:
-  contents: write
+    
+    
+        permissions:
+            contents: write
+
+[Next Exercise](../exercise-6/README.md)

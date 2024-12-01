@@ -42,3 +42,4 @@ The `index.html` file is already provided in the `exercise` folder.
 ---
 
 Good luck, and happy coding!
+[Next Exercise](../exercise-5/README.md)
