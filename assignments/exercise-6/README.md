@@ -1,5 +1,5 @@
 
-# Exercise 6: Create Reusable Workflows and Templates with GitHub Actions
+# Exercise 6: Create Reusable Workflows with GitHub Actions
 
 In this exercise, you will create reusable workflows and use it.
 
@@ -13,23 +13,29 @@ In this exercise, you will create reusable workflows and use it.
 - **Name the Workflow**: `"Reusable CI Workflow"`.
 - **Trigger the Workflow**: Use the `workflow_call` trigger to allow other workflows to invoke it.
 - **Define Workflow Inputs**:
-    - Specify required inputs, such as the Node.js version.
+    - Specify required inputs, such as the Java version and distribution.
 - **Add the Following Steps**:
     1. **Checkout the Repository Code**:  
        Use `actions/checkout@v3`.
-    2. **Set Up Node.js Environment**:  
+    2. **Set Up Java Environment**:  
        Use `actions/setup-node@v3` and configure it to use the Node.js version passed as an input.
     3. **Install Dependencies**:  
        Run:
        ```bash
-       npm install
+       mvn compile
        ```
     4. **Run Tests**:  
        Execute:
        ```bash
-       npm test
+       mvn test
        ```
-
+    5. **Project**:
+       Use the project from exercise 5 in the workflow with the example code:
+        ```bash
+       working-directory: assignments/exercise-5
+       ```
+       to specify the location of the project, where the "assignments/exercise-5"
+       is the location of the project from exercise 5
 ### 3. Create a Workflow to Call the Reusable Workflow
 - **Directory**: In the `.github/workflows/` directory of the same repository, create a new file named `main.yml`.
 - **Configure the Workflow**:
@@ -37,7 +43,7 @@ In this exercise, you will create reusable workflows and use it.
     - **Trigger the Workflow**: Set it to run on pushes to the `main` branch.
     - **Call the Reusable Workflow**:
         - Use the `uses` keyword to reference the reusable workflow.
-        - Provide the required inputs such as the Node.js version.
+        - Provide the required inputs such as the Java version and distribution.
 
 ### 4. Verify the Workflows
 1. **Commit and Push Changes**:  
