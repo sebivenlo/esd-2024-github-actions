@@ -1,13 +1,14 @@
 # The Workflow's name
 name: Java CI with Gradle
 
-# The workflow should run when pushing
+# The workflow should run when pushing and pull requesting to "prod", "dev" and "stage"
 on:
   push:
     branches: [ "prod", "dev", "stage" ]
   pull_request:
     branches: [ "prod", "dev", "stage" ]
 
+# Set the default working directory so we can call gradlew directly in the steps
 defaults:
   run:
     working-directory: ./assignments/exercise-3
@@ -17,7 +18,7 @@ jobs:
     runs-on: ["self-hosted"]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4 # Checkouts the repository
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
