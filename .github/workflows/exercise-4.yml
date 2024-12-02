@@ -2,7 +2,11 @@ name: Deploy Static Site
 
 on:
   push:
-    branches: [ "main", "prod", "dev", "stage" ]
+    branches:
+      - main
+      - prod
+      - dev
+      - stage
 
 jobs:
   build-and-deploy:
