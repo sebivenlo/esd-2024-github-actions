@@ -1,19 +1,19 @@
-name: Post Tweet on Push
-
-on: push
-
-jobs:
-  tweet:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Post a tweet on push
-        uses: julb/action-post-twitter-status@v1
-        with:
-          message: "🚀 Code has been pushed to the repository!"
-          twitter_app_consumer_api_key: ${{ secrets.TWITTER_API_KEY }}
-          twitter_app_consumer_api_secret_key: ${{ secrets.TWITTER_API_SECRET_KEY }}
-          twitter_app_access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          twitter_app_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+#name: Post Tweet on Push
+#
+#on: push
+#
+#jobs:
+#  tweet:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - name: Post a tweet on push
+#        uses: julb/action-post-twitter-status@v1
+#        with:
+#          message: "🚀 Code has been pushed to the repository!"
+#          twitter_app_consumer_api_key: ${{ secrets.TWITTER_API_KEY }}
+#          twitter_app_consumer_api_secret_key: ${{ secrets.TWITTER_API_SECRET_KEY }}
+#          twitter_app_access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+#          twitter_app_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
