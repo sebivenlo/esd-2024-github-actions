@@ -4,9 +4,9 @@ name: Java CI with Gradle
 # The workflow should run when pushing and pull requesting to "prod", "dev" and "stage"
 on:
   push:
-    branches: [ "prod", "dev", "stage" ]
+    branches: [ "main", "prod", "dev", "stage" ]
   pull_request:
-    branches: [ "prod", "dev", "stage" ]
+    branches: [ "main", "prod", "dev", "stage" ]
 
 # Set the default working directory so we can call gradlew directly in the steps
 defaults:
