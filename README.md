@@ -1,6 +1,6 @@
 # GitHub Actions Workshop
 
-Link to the solutions repository: https://github.com/evl-8/esd-github-actions-solution
+Link to the solutions repository: https://github.com/evl-8/esd-github-actions-solution  
 Link to the assignments repository: https://github.com/evl-8/esd-github-actions-assignment
 
 # ESD template
