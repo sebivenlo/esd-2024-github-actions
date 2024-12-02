@@ -1,7 +1,7 @@
 
 # Exercise 6: Create Reusable Workflows and Templates with GitHub Actions
 
-In this exercise, you will create reusable workflows and templates to standardize CI/CD processes across multiple repositories.
+In this exercise, you will create reusable workflows and use it.
 
 ## Steps
 
@@ -37,15 +37,14 @@ In this exercise, you will create reusable workflows and templates to standardiz
     - **Trigger the Workflow**: Set it to run on pushes to the `main` branch.
     - **Call the Reusable Workflow**:
         - Use the `uses` keyword to reference the reusable workflow.
-        - Provide required inputs such as the Node.js version.
+        - Provide the required inputs such as the Node.js version.
 
 ### 4. Verify the Workflows
 1. **Commit and Push Changes**:  
-   Push the `ci.yml` and `main.yml` files to their respective repositories.
+   Push the `ci.yml` and `main.yml` files to the repository.
 2. **Observe Workflow Execution**:  
    Go to the "Actions" tab in your GitHub repository to verify the workflow runs.
 3. **Check Logs and Results**:  
    Confirm that the reusable workflow is called and all steps execute successfully.
 
-
-Reusable workflows make CI/CD processes consistent and efficient across multiple projects. Happy coding!
+Happy coding!

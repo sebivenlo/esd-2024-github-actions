@@ -1,6 +1,6 @@
 # Exercise 4: Deploy a Static Site with GitHub Actions
 
-In this exercise, you will create a workflow that uses **GitHub Pages** to deploy a simple static site online.
+In this exercise, you will create a workflow that uses **GitHub Pages** to deploy a static site online.
 
 ## Steps
 
@@ -18,7 +18,7 @@ The `index.html` file is already provided in the `exercise` folder.
 
 ### 3. Configure the Workflow
 
-1. **Give it a name**: `"Deploy Static Site"`.
+1. **Give the workflow a name**: `"Deploy Static Site"`.
 2. **Trigger the workflow**: Set it to run when pushing to the `main` branch.
 3. **Add the following steps**:
    - Checkout the repository code using `actions/checkout@v3`.
