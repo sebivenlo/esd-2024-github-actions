@@ -26,6 +26,7 @@ This approach still gives developers clarity but may require a bit more set-up.
 Both platforms offer flexibility in pipeline configuration, but they differ in structure and practices. GitHub Actions workflows are referred to as jobs, which can be grouped and executed in different orders using dependencies and conditional statements (Schroeder, 2024). This allows for separation of concerns, such as creating distinct build and deployment jobs within a single workflow or across reusable workflows for modularity.
 
 In GitLab CI/CD, pipelines are structured around stages, which group related jobs together. This allows for more granular control, such as requiring a single approval gate for all jobs in a stage. While GitHub Actions does not natively support a "stage" concept, workflows can emulate this using job dependencies and naming conventions (Colin, 2024).
+
 ---
 
 ## Supported Runners
