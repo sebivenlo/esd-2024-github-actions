@@ -1,141 +1,125 @@
-# GitHub Actions vs. Jenkins: A Comparative Guide
+## Similarities
+ 
+- Build, test and deploy code changes, which in turn enables faster development cycles [^1], [^17]
+- Allow developers to automate the process of integrating code changes[^17] from multiple team members [^1]
+- Can deploy code to different environments such as: dev, staging (stage) and production (prod) [^1]
+- Maintain code quality [^1], by running tests* and linters**.
+- Keeping teams in sync [^1], by pushing internal libraries to a central server as soon they are finished
+
+\* _such as [JUnit](https://junit.org/junit5/) in Java, [https://kotest.io/](https://kotest.io/) for Kotlin or [Rust Tests] https://doc.rust-lang.org/book/ch11-01-writing-tests.html_  
+\** _such as SonarLint in Java, [Detekt](https://github.com/detekt/detekt) in Kotlin or [Clippy](https://github.com/rust-lang/rust-clippy) in Rust_
 
 
-## Introduction
+## Criteria
 
-Choosing the right Continuous Integration and Continuous Deployment (CI/CD) tool is crucial to streamlining development workflows (Safe, 2023). 
-*Jenkins* is a well known, self-hosted automation server with a rich ecosystem of plugins. 
-*GitHub Actions*, on the other hand, integrates natively with GitHub, providing a convenient way to build, test, and deploy applications or infrastructure (Dinu, 2024).
+For the comparison I choose following criteria:
 
----
+### Setup
 
-## 1. Platform Overview
+The required effort or knowledge is an important criteria in an organisational context.
+The longer you have to work on something, the more you have to pay your employees.
+The more they need to know, the higher your employees need to be educated, and in turn their salary is higher.
+If setup is long and complex you need more effort and knowledge than with a simple setup or no setup.
+A complex setup usually comes with the benefit that the program is more powerful.
+If this is desired or not, depends on the context.
 
-| Feature                 | Jenkins                                                                                  | GitHub Actions                                                                                         |
-|--------------------------|------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| *Hosting*             | Self-hosted (Safe, 2023; Dinu, 2024).                                                    | cloud-hosted (Safe, 2023; Dinu, 2024).                                                                 |
-| *Setup*               | Reqiures manual installation and instance creation (Dinu, 2024).                         | No installation. Simple setup with YAML workflows (Safe, 2023; Dinu, 2024).                            |
-| *Extensibility*       | Large plugin ecosystem for customization (Safe, 2023).                                   | Extensive marketplace of reusable Actions (Safe, 2023).                                                |
-| *Integration*         | Integrates with many tools and services through plugins (Safe, 2023).                    | Native integration with GitHub repositories and events (Safe, 2023; Dinu, 2024).                       |
-| *Execution Model*     | Primarily polling-based, event-driven through webhooks/plugins (Safe, 2023; Dinu, 2024). | Event-driven by default (e.g., triggered on push or pull_request) (Safe, 2023; Dinu, 2024).            |
-| *Programming Language Support* | Supports multiple languages through plugins (Safe, 2023).                                | Supports multiple languages natively through predefined and custom Actions (Safe, 2023).               |
-| *Scaling*             | Requires manual scaling and infrastructure management (Dinu, 2024).                      | Scales automatically with GitHub-hosted runners (Safe, 2023; Dinu, 2024).                              |
-| *Cost*                | Free for self-hosted setups; costs depend on infrastructure (Dinu, 2024).                | Free for public repositories; usage fees for private repositories with large-scale usage (Dinu, 2024). |
+### Price
 
----
+Price is important factories for business, so it is important to keep it low.
+Price here refers to the software itself and not additional costs for hosting.
+This could be included, but an extensive price comparisons is out of scope, because there a lot of different
+cloud providers. Price can vary a lot therefore.
+A price range should be stated here.
 
-## 2. Configuration Language
+### Vendor Lock in
 
-- *Jenkins*: Utilizes Groovy-based pipelines for defining build stages and logic (Safe, 2023).
-- *GitHub Actions*: Uses YAML, triggering workflows on GitHub events (Dinu, 2024).
+Vendor lock in means that you are forced to use the software by the same vendor, instead of different ones.
+This is usually not desired, because it limits the flexibility of switching to other products, if your requirements changes.
 
-| Aspect                   | Jenkins (Groovy DSL)                                       | GitHub Actions (YAML)                                                  |
-|--------------------------|------------------------------------------------------------|-------------------------------------------------------------------------|
-| *Learning Curve*       | Steeper, especially for beginners (Safe, 2023).            | Generally easier and more familiar to Github users (Dinu, 2024).          |
-| *Customization*        | Extensive plugin usage and custom scripts (Safe, 2023).    | Leverage official or community Actions (Dinu, 2024).                    |
-| *Syntax & Readability* | Can be powerful but complex (Safe, 2023).                  | Often simpler, especially for GitHub-centric teams (Dinu, 2024).        |
+### Host Type
 
----
+Host type refers to how the CI/CD is hosted. Self-hosted, cloud or both.
+Some companies have very strict security guidelines or company secrets.
+A cloud-hosted CI/CD could expose a risk for some companies
 
-## 3. Ecosystem and Extendability
+### Scaling
 
-### Jenkins Ecosystem
-- *Plugins*: Widely recognized for its vast plugin ecosystem, covering a range of integrations (Safe, 2023).
-- *Community Support*: Large community presence for troubleshooting (Dinu, 2024).
-- *Downside*: With many plugins, maintenance can become cumbersome (Safe, 2023).
+Scaling is important, because team size and company size can vary.
+At a certain point, you need to scale your CI/CD properly.
+A CI/CD cluster will differ significantly between a student group and large automobile manufacturer.
+It should be stated how easy it is to scale and also mention price, if possible
 
-### GitHub Actions Ecosystem
-- *Marketplace*: Offers a variety of prebuilt and community-maintained Actions (Dinu, 2024).
-- *Reusability*: Users can create custom or shared Actions to standardize tasks (Safe, 2023).
-- *Downside*: Overall plugin/Action library may be smaller than Jenkins but is growing rapidly (Dinu, 2024).
+### Extensibility
 
----
+Extensibility refers to the possibility to customize CI/CD.
+Some projects may require a certain software or in-house solutions.
+In that case it is important to what extent CI/CD can be customized.
 
-## 4. Scalability and Hosting
+### Execution Model 
 
-| Feature              | GitHub Actions                                          | Jenkins                                                   |
-|----------------------|---------------------------------------------------------|-----------------------------------------------------------|
-| *Hosting Model*    | SaaS by default (GitHub-hosted runners) or self-hosted | Always self-hosted                                        |
-| *Scaling*          | Auto-scaling on GitHub’s infrastructure                | Manual scaling of servers and executors (Dinu, 2024)      |
-| *Maintenance*      | Minimal for hosted; more for self-hosted runners       | Requires ongoing maintenance of servers/containers (Safe, 2023) |
+Execution Model explains the architecture and way of working.
+This is important, because different projects may require different architecture.
+An event-based architecture my draw too much performance when there are a lot of events. 
 
-- *GitHub Actions*: For large private repositories, usage fees may rise with heavy usage (Dinu, 2024).
-- *Jenkins*: Being open-source, the software is free, but the cost and labor of infrastructure can add up (Safe, 2023).
+### Maintenance
 
----
+Maintenance is important because CI/CD is setup once, and then maintained.
+Maintenance means here how easy it is to debug or how much effort is required.
 
-## 5. Security Considerations
+### Ease of use
 
-- *Jenkins*
-    - Must handle security configurations on the self-hosted instance (Dinu, 2024).
-    - Plugin vulnerabilities and manual updates can become a concern (Safe, 2023).
+Ease of use  means how easy it is to learn a CI/CD platform.
+For small projects or prototypes a fast result may be important.
+Usually, a steep learning curve implies more configuration.
+So you have a trade-off between complexity and Ease of use
 
-- *GitHub Actions*
-    - Leverages GitHub’s built-in security for credentials and secrets, but organizational policies might need extra configuration (Dinu, 2024).
-    - Integrates with GitHub’s branch protection rules, PR checks, and secret management (Safe, 2023).
+## General Overview
 
----
+|       | GitHub                                                                                                                                                                                           | Jenkins                                                                  |
+|-------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Setup | Installation only required for self-hosted runners[^10], otherwise none                                                                                                                          | Installation required [^6]                                               
+| Price | Free for standard GitHub-hosted runners in public repositories, and for self-hosted runners [^4] <br> For private repositories, GitHub Free offers 500MB storage and 2000 minutes per month [^4] | Free, but requires self hosting                                          |
+| Vendor Lock in | Practically yes\*, you need to use GitHub                                                                                                                                                        | No, you can install it to different vendors [^6]                         
+| Scaling |
+| Extensibility | Huge community support and GitHub marketplace[^1], [^15]                                                                                                                                         | Through the Plugin index [^14]                                           
+| Maintenance | Detailed logs and visual representations of workflows [^1], [^9]                                                                                                                                 | Yes, through BlueOcean [^11] or plugins like "Pipeline: Stage View"[^12] 
+| Ease of use | GitHub provides templates [^13] and will automatically suggest these based on your repository code, no installion requierd | Easy to install [^16]                                                    | 
 
-## 6. Use Cases
+\* _Technically, nobody is stopping you from cloning a non-GitHub repository in a self-Hosted runner action_
 
-### When Jenkins Shines
-- *Complex Environments*: Large enterprises with advanced build requirements and plugin usage (Safe, 2023).
-- *Non-GitHub VCS*: Jenkins can integrate with various version control systems, making it more versatile in certain multi-vsc-repo setups (Dinu, 2024).
-- *Complete Customization*: Organizations that want to control every aspect of their CI/CD pipeline on their own hardware (Safe, 2023).
+## Feature Overview
 
-### When GitHub Actions Shines
-- *GitHub-Centric Teams*: Projects already hosted on GitHub that want minimal overhead (Dinu, 2024).
-- *Simplicity and Speed*: Developers seeking a quick start with YAML-based workflows (Safe, 2023).
-- *Parallel Builds*: GitHub Actions supports matrix builds for running tests or builds across multiple configurations simultaneously (Dinu, 2024).
+### Testing on different machines/environments
 
----
+If you are building a cross-platform program, you need to verify it works on different machines.
+If you are using Rust, you also need to compile per architecture and operating system [^3]
+Even when you are using Java, you need to verify your program on different machines, because issues my occur, like
+line ending mismatch.
 
-## 7. Key Differences in Summary
+|                                            | GitHub Actions                | Jenkins |
+|--------------------------------------------|-------------------------------| - |
+| Integration with other platforms | Seamless integration wih GitHub | Compatible with popular DevOps tools like Maven, Gradle, Git, Docker, and Kubernetes.[^16], [^17] 
+| Testing on different machines/environments | GitHub matrix strategies [^2] | Distributed builds* [^1], [^17]
+| Scripting lanugage | YAML                          | Groovy
 
-| Criterion               | Jenkins                                                          | GitHub Actions                                            |
-|-------------------------|------------------------------------------------------------------|-----------------------------------------------------------|
-| *Hosting*            | Self-hosted only (servers or containers)                         | Default GitHub-hosted, optional self-hosted runners       |
-| *Setup*              | Manual install and plugin management (Safe, 2023)                | YAML-driven; minimal setup if repo is on GitHub (Dinu, 2024) |
-| *Cost Structure*     | Open source but pay for underlying infra (Dinu, 2024)            | Free tier for public repos; usage-based for private (Safe, 2023) |
-| *Extensibility*      | Vast plugin ecosystem (Safe, 2023)                                | Large and growing marketplace of Actions (Dinu, 2024)     |
-| *Learning Curve*     | Higher due to Groovy pipelines and plugin complexity (Safe, 2023)| Usually lower (Dinu, 2024)                                |
-| *Scalability*        | Manual scaling of executors and servers (Dinu, 2024)             | Auto-scales with GitHub runners; self-hosting optional    |
-| *Security*           | Must manage updates, plugins, and vulnerabilities (Safe, 2023)   | Leverages GitHub’s security ecosystem (Dinu, 2024)        |
+\* Although [^1] and [^17] state that distributed builds can do that, the Jenkins Documentation for Distributed builds is outdated [^18], but the updated one is still under [^19].
 
----
-
-## 8. Conclusion
-
-Both *Jenkins* and *GitHub Actions* are powerful CI/CD tools, each with distinct strengths:
-
-- *Jenkins* excels in customizability and broad plugin integration, making it a solid choice for large or varied infrastructures (Safe, 2023).
-- *GitHub Actions* provides seamless GitHub integration, lower maintenance overhead, and a generous free tier for smaller projects, but can become costly at scale (Dinu, 2024).
-
-Ultimately, the “best” tool depends on your project’s requirements, the team’s familiarity with either Groovy or YAML, and whether you prefer hosted versus fully self-managed infrastructure. Understanding these trade-offs can guide an informed decision that aligns your pipeline with your organizational context (Safe, 2023; Dinu, 2024).
-
----
-
-## References
-
-- *Dinu, F.* (2024, September 19). GitHub Actions vs. Jenkins: Popular CI/CD Tools Comparison. Spacelift.  
-  [https://spacelift.io/blog/github-actions-vs-jenkins](https://spacelift.io/blog/github-actions-vs-jenkins)
-
-- *Safe.* (2023, November 16). Mastering CI/CD: GitHub Actions vs Jenkins. Medium.  
-  [https://safeti.medium.com/mastering-ci-cd-github-actions-vs-jenkins-5e619c5cbf3b](https://safeti.medium.com/mastering-ci-cd-github-actions-vs-jenkins-5e619c5cbf3b)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[^1]: https://testomat.io/blog/jenkins-vs-github-actions-which-cicd-tool-is-right/
+[^2]: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow#example-using-a-single-dimension-matrix
+[^3]: https://forge.rust-lang.org/infra/other-installation-methods.html
+[^4]: https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions#about-billing-for-github-actions
+[^5]: https://docs.github.com/en/actions/about-github-actions/understanding-github-actions#runners
+[^6]: https://www.jenkins.io/doc/book/installing/
+[^7]: https://github.com/jenkinsci/jenkins
+[^8]: https://github.com/jenkinsci/jenkins/blob/master/LICENSE.txt
+[^9]: https://docs.github.com/en/actions/writing-workflows/quickstart#viewing-your-workflow-results
+[^10]: https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners
+[^11]: https://www.jenkins.io/doc/book/blueocean/#blue-ocean-overview
+[^12]: https://plugins.jenkins.io/pipeline-stage-view/
+[^13]: https://github.com/actions/starter-workflows
+[^14]: https://plugins.jenkins.io/
+[^15]: https://github.com/marketplace
+[^16]: https://www.accelq.com/blog/what-is-jenkins-in-devops/
+[^17]: https://dev.to/mcieciora/why-jenkins-is-still-mvp-among-cicd-tools-2npn
+[^18]: https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds
+[^19]: https://www.jenkins.io/doc/developer/distributed-builds/
